@@ -12,11 +12,27 @@ cd vsc-test-suite
 
 Optional `args` will be passed to the reframe command.
 
+To filter out tests and execute a subset of tests under the `tests` folder, you may use, e.g.:
+
+```
+./run.sh -c ./tests/cue
+```
+
+To (re)run a specific test (with a known test `<hash>`) and to enable `--verbose` output, do e.g.:
+
+```
+# the <hash> looks like '/75be71de'
+./run.sh -c tests/cue/tools.py -n <hash> -p standard --system genius:single-node -r --verbose
+```
+
+If for some reason, the local config file is not automatically picked up by ReFrame, you may pass
+`-C config_vsc.py` explicitly, too.
+
 ## Output location
 
 Log files and output will be saved in $HOME/reframe
 
 ## Requirements 
 
-- Reframe 3.10.1 installed as a module
+- Reframe 4.3.3 installed as a module
 - Python3

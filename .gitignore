@@ -1,6 +1,7 @@
 __pycache__/
 reframe.log
 reframe.out
+*.log
 perflogs/
 stage/
 output/

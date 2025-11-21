@@ -1,6 +1,7 @@
 import grp
 import os
 from py import builtin
+import socket
 
 
 antwerpen_mode_options = [       
@@ -38,12 +39,14 @@ perf_logging_format[-1] += '}'
 
 # To run jobs on the kul cluster, you need to be a member of the following
 # vsc group
-kul_account_string_tier2 = '-A lpt2_vsc_test_suite'
+kul_account_string_tier2 = '-A lpt2_sysadmin'
+kul_sbatch_tier2_genius = '-M genius'
 
 # By default, not all installed modules are visible on the genius cluster
-genius_modulepath = []
-for version in ['2018a', '2019b', '2021a']:
-    genius_modulepath.append(f'/apps/leuven/skylake/{version}/modules/all')
+genius_common_modulepath = ['/apps/leuven/common/modules/all']
+genius_toolchains_modulepath = [f'/apps/leuven/rocky8/cascadelake/{version}/modules/all' for version in
+                        ['2018a', '2019b', '2021a', '2024a']]
+genius_modulepath = genius_common_modulepath + genius_toolchains_modulepath
 
 # Specify hortense access flag in order to run jobs
 # Flag is selected according to user group
@@ -138,7 +141,7 @@ site_configuration = {
         {
             'name': 'genius',
             'descr': 'VSC Tier-2 Genius',
-            'hostnames': ['tier2-p-login-[1-4].genius.hpc.kuleuven.be'],
+            'hostnames': ['tier2-p-login-[1-4].*', socket.gethostname()],
             'modules_system': 'lmod',
             'partitions': [
                 {
@@ -154,9 +157,9 @@ site_configuration = {
                 },
                 {
                     'name': 'single-node',
-                    'scheduler': 'torque',
+                    'scheduler': 'slurm',
                     'modules': [],
-                    'access': [kul_account_string_tier2],
+                    'access': [kul_account_string_tier2, kul_sbatch_tier2_genius],
                     'environs': ['standard'],
                     'descr': 'single-node jobs',
                     'max_jobs': 1,
@@ -165,7 +168,7 @@ site_configuration = {
                 },
                 {
                     'name': 'mpi-job',
-                    'scheduler': 'torque',
+                    'scheduler': 'slurm',
                     'access': [kul_account_string_tier2],
                     'environs': ['foss-2021a'],
                     'descr': 'MPI jobs',
