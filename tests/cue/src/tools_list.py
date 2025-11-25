@@ -121,12 +121,14 @@ tools = {
         'exe': 'bzr',
         'minver': '2.5.1',
         'modname': 'Bazaar',
+        'negate': True,
     },
     'mercurial':
     {
         'exe': 'hg',
         'minver': '5.8',
         'modname': 'Mercurial',
+        'negate': True,
     },
     'Python2':
     {
@@ -145,16 +147,14 @@ tools = {
     'EasyBuild_module':
     {
         'exe': 'eb',
-        'minver': '4.4.0',
+        'minver': '5.0.0',
         'modname': 'EasyBuild',
         'avail_on': ['*:local']
     },
     'EasyBuild_not_on_image':
     {
         'exe': 'eb',
-#        'negate': True
-        'not_as_module': True,
-    },
+},
     'ReFrame':
     {
         'exe': 'reframe',
@@ -165,7 +165,7 @@ tools = {
     {
         'exe': 'singularity',
         'modname': 'Singularity',
-        'not_as_module': True,
+        'not_as_module': False,
         'avail_on': ['*:local']
     },
     'Davix':
