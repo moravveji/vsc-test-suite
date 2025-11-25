@@ -120,7 +120,7 @@ tools = {
     {
         'exe': 'bzr',
         'minver': '2.5.1',
-        'modname': 'Bazaar',
+        'avail_on': ['*:local'],
         'negate': True,
     },
     'mercurial':
@@ -154,7 +154,7 @@ tools = {
     'EasyBuild_not_on_image':
     {
         'exe': 'eb',
-},
+    },
     'ReFrame':
     {
         'exe': 'reframe',
