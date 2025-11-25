@@ -28,7 +28,7 @@ envars = {
     },
     'VSC_ARCH_SUFFIX':
     {
-        'exe': ['print(os.environ["VSC_ARCH_SUFFIX"] in ["", "-ib"])'],
+        'exe': ['print(os.environ["VSC_ARCH_SUFFIX"] in ["", "-ib", "-h100"])'],
     },
     'VSC_INSTITUTE':
     {
