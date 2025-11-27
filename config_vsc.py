@@ -158,7 +158,7 @@ site_configuration = {
                 {
                     'name': 'single-node',
                     'scheduler': 'slurm',
-                    'modules': [],
+                    'modules': ['cluster/genius/batch'],
                     'access': [kul_account_string_tier2, kul_sbatch_tier2_genius],
                     'environs': ['standard'],
                     'descr': 'single-node jobs',

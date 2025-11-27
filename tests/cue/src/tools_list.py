@@ -154,6 +154,7 @@ tools = {
     'EasyBuild_not_on_image':
     {
         'exe': 'eb',
+        'negate': True,
     },
     'ReFrame':
     {
