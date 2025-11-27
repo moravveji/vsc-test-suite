@@ -40,7 +40,7 @@ perf_logging_format[-1] += '}'
 # To run jobs on the kul cluster, you need to be a member of the following
 # vsc group
 kul_account_string_tier2 = '-A lpt2_sysadmin'
-kul_sbatch_tier2_genius = '-M genius'
+kul_sbatch_tier2_genius = '-M genius -p interactive'
 
 # By default, not all installed modules are visible on the genius cluster
 genius_common_modulepath = ['/apps/leuven/common/modules/all']
@@ -147,7 +147,7 @@ site_configuration = {
                 {
                     'name': 'local',
                     'scheduler': 'local',
-                    'modules': ['cluster/genius/batch'],
+                    'modules': [], #['cluster/genius/batch'],
                     'access': [],
                     'environs': ['standard'],
                     'descr': 'tests in the local node (no job)',

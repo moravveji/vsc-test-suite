@@ -148,7 +148,6 @@ tools = {
         'exe': 'eb',
         'minver': '5.0.0',
         'modname': 'EasyBuild',
-        'avail_on': ['*:local'],
         're': r'This is EasyBuild (\d+(?:\.\d+)*)',
     },
     'EasyBuild_not_on_image':

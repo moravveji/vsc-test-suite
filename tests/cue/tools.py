@@ -56,7 +56,8 @@ class VSCToolAvailabilityTest(rfm.RunOnlyRegressionTest):
             out = sn.and_(self.my_finder(r'^[a-zA-Z/]', self.stdout),
                           self.my_finder(r'Unable to find', self.stderr))
         else:
-            out = self.my_finder(r'^[a-zA-Z/]', self.stdout)
+            #out = self.my_finder(r'^[a-zA-Z/]', self.stdout)
+            out = self.my_finder(r'^[a-zA-Z/]', self.stderr)
 
         if tools[self.tool].get('negate'):
             return sn.not_(out)
