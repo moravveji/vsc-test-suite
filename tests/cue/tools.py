@@ -43,12 +43,20 @@ class VSCToolAvailabilityTest(rfm.RunOnlyRegressionTest):
 
     @deferrable
     def my_finder(self, patt, string):
-        with sn._open(string, 'rt', encoding='utf-8') as chars:
-            num_matches = sn.count(sn.finditer_s(patt, chars.read()))
-            if num_matches:
-                return True
-            else:
-                return False
+        # Cleaning up job prolog message in the Slurm job output file specific to KU Leuven site
+        prolog_cleanup = ''
+        with open(string, 'r') as fh:
+            lines = list(fh)
+            if lines:
+                prolog_cleanup = [_ for _ in lines if not (_.startswith('SLURM_') or
+                                                           'Date' in _ or
+                                                           'Walltime' in _ or
+                                                           _.startswith('==='))]
+                prolog_cleanup = ''.join(prolog_cleanup)
+        
+        num_matches = sn.count(sn.finditer_s(patt, prolog_cleanup))
+
+        return True if num_matches > 0 else False
 
     @sanity_function
     def assert_availability(self):
@@ -56,8 +64,7 @@ class VSCToolAvailabilityTest(rfm.RunOnlyRegressionTest):
             out = sn.and_(self.my_finder(r'^[a-zA-Z/]', self.stdout),
                           self.my_finder(r'Unable to find', self.stderr))
         else:
-            #out = self.my_finder(r'^[a-zA-Z/]', self.stdout)
-            out = self.my_finder(r'^[a-zA-Z/]', self.stderr)
+            out = self.my_finder(r'^[a-zA-Z/]', self.stdout)
 
         if tools[self.tool].get('negate'):
             return sn.not_(out)
