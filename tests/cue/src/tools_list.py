@@ -128,6 +128,7 @@ tools = {
         'exe': 'hg',
         'minver': '5.8',
         'modname': 'Mercurial',
+        're': r'version (\d+(?:\.\d+)*)',
     },
     'Python2':
     {
@@ -158,7 +159,7 @@ tools = {
     'ReFrame':
     {
         'exe': 'reframe',
-        'minver': '3.10.1',
+        'minver': '4.8.2',
         'modname': 'ReFrame',
     },
     'Singularity_image_only':
