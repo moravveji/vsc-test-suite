@@ -29,4 +29,5 @@ except:
     regular = r'(?:(\d+\.(?:\d+\.)*\d+))'
 match = re.findall(regular, out)
 
-print(version(tool['minver']) <= version(match[0]))  # True
+print(version(tool['minver']) <= version(match[0]))
+

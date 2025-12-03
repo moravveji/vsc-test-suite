@@ -1,4 +1,9 @@
-module load ReFrame/4.3.3
+#!/bin/bash -l
+
+set -e
+module load ReFrame/4.8.2-GCCcore-14.2.0
+module load archspec/0.2.5-GCCcore-14.2.0
+set +e
 
 export RFM_CONFIG_FILES=$(dirname $0)/config_vsc.py
 export RFM_CHECK_SEARCH_PATH=$(dirname $0)/tests
