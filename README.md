@@ -5,7 +5,7 @@ VSC test suite
 
 run script that works recursively
 
-```
+```bash
 cd vsc-test-suite
 ./run.sh args
 ```
@@ -14,13 +14,13 @@ Optional `args` will be passed to the reframe command.
 
 To filter out tests and execute a subset of tests under the `tests` folder, you may use, e.g.:
 
-```
+```bash
 ./run.sh -c ./tests/cue
 ```
 
 To (re)run a specific test (with a known test `<hash>`) and to enable `--verbose` output, do e.g.:
 
-```
+```bash
 # the <hash> looks like '/75be71de'
 ./run.sh -c tests/cue/tools.py -n <hash> -p standard --system genius:single-node -r --verbose
 ```
