@@ -62,11 +62,6 @@ tools = {
         'exe': 'emacs',
         'minver': '24',
     },
-    'MidnightCommander':
-    {
-        'exe': 'mc',
-        'minver': '4.8.7',
-    },
     'subversion':
     {
         'exe': 'svn',
@@ -115,12 +110,6 @@ tools = {
         'exe': 'ml',
         'options': '2>&1',
         'minver': '8.2.7', 
-    },
-    'bazaar':
-    {
-        'exe': 'bzr',
-        'minver': '2.5.1',
-        'modname': 'Bazaar',
     },
     'mercurial':
     {
