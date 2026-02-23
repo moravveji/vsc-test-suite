@@ -39,7 +39,7 @@ perf_logging_format[-1] += '}'
 
 # To run jobs on the kul cluster, you need to be a member of the following
 # vsc group
-kul_account_string_tier2 = '-A lpt2_sysadmin'
+kul_account_string_tier2 = '-A lpt2_vsc_test_suite'
 kul_sbatch_tier2_genius = '-M genius -p interactive'
 
 # By default, not all installed modules are visible on the genius cluster
