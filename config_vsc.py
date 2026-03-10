@@ -44,8 +44,10 @@ kul_sbatch_tier2_genius = '-M genius -p interactive'
 
 # By default, not all installed modules are visible on the genius cluster
 genius_common_modulepath = ['/apps/leuven/common/modules/all']
-genius_toolchains_modulepath = [f'/apps/leuven/rocky8/cascadelake/{version}/modules/all' for version in
-                        ['2018a', '2019b', '2021a', '2024a', '2025a']]
+genius_toolchains_modulepath = [
+    f'/apps/leuven/rocky8/cascadelake/{version}/modules/all'
+    for version in ['2018a', '2019b', '2021a', '2024a', '2025a']
+]
 genius_modulepath = genius_common_modulepath + genius_toolchains_modulepath
 
 # Specify hortense access flag in order to run jobs
