@@ -149,7 +149,7 @@ site_configuration = {
                 {
                     'name': 'local',
                     'scheduler': 'local',
-                    'modules': [], #['cluster/genius/batch'],
+                    'modules': [],
                     'access': [],
                     'environs': ['standard'],
                     'descr': 'tests in the local node (no job)',
