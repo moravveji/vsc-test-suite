@@ -17,7 +17,8 @@ envars = {
         # this fails in login2 of Genius due to missing aes feature
         'exe': [
             'import archspec.cpu',
-            'aliases = {"skylake": ["skylake_avx512",], "rome": ["zen2"], "milan": ["zen3"]}',  # exceptions to the (full) archspec name
+            # exceptions to the (full) archspec name
+            'aliases = {"skylake": ["skylake_avx512",], "rome": ["zen2"], "milan": ["zen3"]}',
             'env = os.environ["VSC_ARCH_LOCAL"]',
             'if env in aliases.keys():',
             '    env = aliases[env]',
@@ -28,7 +29,7 @@ envars = {
     },
     'VSC_ARCH_SUFFIX':
     {
-        'exe': ['print(os.environ["VSC_ARCH_SUFFIX"] in ["", "-ib", "-h100"])'],
+        'exe': ['print(os.environ["VSC_ARCH_SUFFIX"] in ["", "-ib", "-h100", "-h200"])'],
     },
     'VSC_INSTITUTE':
     {
@@ -44,7 +45,7 @@ envars = {
     },
     'VSC_OS_LOCAL':
     {
-        'exe': ['print(os.environ["VSC_OS_LOCAL"] in ["CO7", "RHEL8", "centos8", "centos7", "rocky8"])'],
+        'exe': ['print(os.environ["VSC_OS_LOCAL"] in ["CO7", "RHEL8", "centos8", "centos7", "rocky8", "rocky9"])'],
     },
     'VSC_SCRATCH_NODE':
     {

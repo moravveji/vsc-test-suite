@@ -39,14 +39,19 @@ perf_logging_format[-1] += '}'
 
 # To run jobs on the kul cluster, you need to be a member of the following
 # vsc group
-kul_account_string_tier2 = '-A lpt2_sysadmin'
-kul_sbatch_tier2_genius = '-M genius -p interactive'
+kul_account_string_tier2 = '--account=lpt2_sysadmin'
+kul_sbatch_tier2_mindwell = ' '.join([
+    '--cluster=mindwell',
+    '--partition=interactive',
+    '--reservation=pilot'
+])
 
 # By default, not all installed modules are visible on the genius cluster
-genius_common_modulepath = ['/apps/leuven/common/modules/all']
-genius_toolchains_modulepath = [f'/apps/leuven/rocky8/cascadelake/{version}/modules/all' for version in
-                        ['2018a', '2019b', '2021a', '2024a', '2025a']]
-genius_modulepath = genius_common_modulepath + genius_toolchains_modulepath
+kul_tier2_common_modulepath = ['/apps/leuven/common/modules/all']
+genius_toolchains_modulepath = [f'/apps/leuven/rocky9/skylake/{version}/modules/all' for version in
+                        ['2024a', '2025a', '2025b']]
+mindwell_toolchains_modulepath = [f'/apps/leuven/rocky9/graniterapids/{version}/modules/all' for version in
+                        ['2024a', '2025a', '2025b']]
 
 # Specify hortense access flag in order to run jobs
 # Flag is selected according to user group
@@ -139,32 +144,32 @@ site_configuration = {
             ]
         },
         {
-            'name': 'genius',
-            'descr': 'VSC Tier-2 Genius',
+            'name': 'mindwell',
+            'descr': 'VSC Tier-2 Mindwell',
             'hostnames': ['tier2-p-login-[1-4].*', socket.gethostname()],
             'modules_system': 'lmod',
             'partitions': [
                 {
                     'name': 'local',
                     'scheduler': 'local',
-                    'modules': [], #['cluster/genius/batch'],
+                    'modules': [], #['cluster/mindwell/batch'],
                     'access': [],
                     'environs': ['standard'],
                     'descr': 'tests in the local node (no job)',
                     'max_jobs': 1,
                     'launcher': 'local',
-                    'env_vars': [['MODULEPATH', ':'.join(genius_modulepath)]],
+                    'env_vars': [['MODULEPATH', ':'.join(kul_tier2_common_modulepath + genius_toolchains_modulepath)]],
                 },
                 {
                     'name': 'single-node',
                     'scheduler': 'slurm',
-                    'modules': ['cluster/genius/batch'],
-                    'access': [kul_account_string_tier2, kul_sbatch_tier2_genius],
+                    'modules': ['cluster/mindwell/interactive'],
+                    'access': [kul_account_string_tier2, kul_sbatch_tier2_mindwell],
                     'environs': ['standard'],
                     'descr': 'single-node jobs',
                     'max_jobs': 1,
                     'launcher': 'local',
-                    'env_vars': [['MODULEPATH', ':'.join(genius_modulepath)]],
+                    'env_vars': [['MODULEPATH', ':'.join(mindwell_toolchains_modulepath)]],
                 },
                 {
                     'name': 'mpi-job',
@@ -174,7 +179,7 @@ site_configuration = {
                     'descr': 'MPI jobs',
                     'max_jobs': 1,
                     'launcher': 'mpirun',
-                    'env_vars': [['MODULEPATH', ':'.join(genius_modulepath)]],
+                    'env_vars': [['MODULEPATH', ':'.join(mindwell_toolchains_modulepath)]],
                 },
             ]
         },

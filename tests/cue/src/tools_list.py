@@ -62,11 +62,6 @@ tools = {
         'exe': 'emacs',
         'minver': '24',
     },
-    'MidnightCommander':
-    {
-        'exe': 'mc',
-        'minver': '4.8.7',
-    },
     'subversion':
     {
         'exe': 'svn',
@@ -116,27 +111,6 @@ tools = {
         'options': '2>&1',
         'minver': '8.2.7', 
     },
-    'bazaar':
-    {
-        'exe': 'bzr',
-        'minver': '2.5.1',
-        'avail_on': ['*:local'],
-        'negate': True,
-    },
-    'mercurial':
-    {
-        'exe': 'hg',
-        'minver': '5.8',
-        'modname': 'Mercurial',
-        're': r'version (\d+(?:\.\d+)*)',
-    },
-    'Python2':
-    {
-        'exe': 'python2',
-        'options': '2>&1',
-        'minver': '2.7.18',
-        'modname': 'Python/2.7.18-GCCcore-10.2.0',
-    },
     'Samba Client':
     {
         'exe': 'smbclient',
@@ -147,7 +121,7 @@ tools = {
     'EasyBuild_module':
     {
         'exe': 'eb',
-        'minver': '5.0.0',
+        'minver': '5.3.0',
         'modname': 'EasyBuild',
         're': r'This is EasyBuild (\d+(?:\.\d+)*)',
     },

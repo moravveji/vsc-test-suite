@@ -24,7 +24,11 @@ class VSCEnvTest(rfm.RunOnlyRegressionTest):
         self.descr += self.envar
         exe = envars[self.envar]['exe']
         # load archspec module
-        self.executable = "ml archspec/0.2.5-GCCcore-14.2.0; python3 -c 'import os; {}'".format('\n'.join(exe))
+        self.executable = "; ".join([
+            'module load archspec/0.2.5-GCCcore-14.2.0',
+            'python3 -c \'import os; {}\''.format('\n'.join(exe)),
+        ])
+        # self.executable = "python3 -c 'import os; {}'".format('\n'.join(exe))
 
     @sanity_function
     def assert_env(self):

@@ -26,7 +26,8 @@ class JobCleanEnvTest(rfm.RunOnlyRegressionTest):
 @rfm.simple_test
 class JobSrunCopyEnvTest(rfm.RunOnlyRegressionTest):
     descr = "test that srun inside job copies the job environment into the task environment"
-    valid_systems = ["*:single-node"]
+    # on Mindwell, srun task cannot be launched from within a batch job
+    valid_systems = [f"{x}:single-node" for x in ['hydra', 'hortense', 'vaughan', 'leibniz']]
     valid_prog_environs = ["standard"]
     time_limit = '10m'
     num_tasks = 1
